@@ -3,7 +3,6 @@
     using System.ComponentModel.DataAnnotations;
     using CoHAApi;
     using DSharpPlus.Entities;
-    using DSharpPlusPlus;
 
     public class Tag : IEmbeddable, IModel
     {

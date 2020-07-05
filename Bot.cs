@@ -3,7 +3,6 @@
     using System.Threading.Tasks;
     using DSharpPlus;
     using DSharpPlus.CommandsNext;
-    using DSharpPlusPlus;
     using Microsoft.Extensions.DependencyInjection;
 
     class Bot
@@ -22,13 +21,13 @@
             
             services.AddTransient<TagRepository>(sp => new TagRepository(sp.GetService<GuildBotDbContext>()));
             services.AddSingleton<GuildBotDbContext>(provider =>
-                new GuildBotDbContext(VentureConfig.ConfigurationProvider.GetAppSettings()["db"]));
+                new GuildBotDbContext(ConfigurationProvider.GetAppSettings()["db"]));
 
 
 
             _client = new DiscordClient(new DiscordConfiguration()
             {
-                Token = VentureConfig.ConfigurationProvider.GetAppSettings()["token"],
+                Token = ConfigurationProvider.GetAppSettings()["token"],
                 TokenType = TokenType.Bot,
                 AutoReconnect = true
             });

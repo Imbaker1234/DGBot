@@ -2,7 +2,6 @@
 {
     using System;
     using System.Linq;
-    using DiceExpression;
     using DSharpPlus;
     using DSharpPlus.Entities;
 
@@ -63,19 +62,6 @@
             };
 
             return client;
-        }
-
-        public static DiscordEmbedBuilder ToEmbed(this DiceExpression de)
-        {
-            var eb = new DiscordEmbedBuilder()
-                {
-                    Title = "Roll Result",
-                }
-                .AddField("Expression", de.Expression)
-                .AddField("Rolls", de.ResolvedExpression)
-                .AddField("Total", de.Result.ToString());
-
-            return eb;
         }
     }
 }
