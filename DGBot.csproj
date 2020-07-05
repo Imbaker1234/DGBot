@@ -1,0 +1,31 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>netcoreapp3.1</TargetFramework>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="CoHAPersistence" Version="1.0.0" />
+      <PackageReference Include="DSharpPlus" Version="4.0.0-nightly-00705" />
+      <PackageReference Include="DSharpPlus.CommandsNext" Version="4.0.0-nightly-00705" />
+      <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="5.0.0-preview.6.20312.4" />
+      <PackageReference Include="Microsoft.Extensions.Configuration" Version="5.0.0-preview.4.20251.6" />
+      <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="5.0.0-preview.4.20251.6" />
+      <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="5.0.0-preview.4.20251.6" />
+      <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="5.0.0-preview.6.20305.6" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Update="appsettings.json">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </None>
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\DSharpPlusPlus\DSharpPlusPlus.csproj" />
+      <ProjectReference Include="..\..\HelpPlus\HelpPlus.csproj" />
+      <ProjectReference Include="..\..\VentureConfig\VentureConfig.csproj" />
+    </ItemGroup>
+
+</Project>
