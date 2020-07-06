@@ -132,11 +132,11 @@
             if(start is null) throw new Exception("Could not find starting message in this channel.");
             if(end is null) throw new Exception("Could not find ending message in this channel.");
             
-            var last100 = await ctx.Channel.GetMessagesBeforeAsync(end.Id, 100);
-
+            var last100 = await ctx.Channel.GetMessagesBeforeAsync(end.Id);
+            
             var msgs = from msg in last100
                 where msg.Timestamp >= start.Timestamp
-                group msg by msg.CreationTimestamp > DateTimeOffset.Now.AddDays(-14) ? true : false into grpedMsgs
+                group msg by msg.CreationTimestamp > DateTimeOffset.Now.AddDays(-14) into grpedMsgs
                 select grpedMsgs;
 
             if(msgs.Any(x => x.Key == true)) 
@@ -152,6 +152,10 @@
                     }
                 }
             }
+
+            //Can't add the message to a read only list so it will need to be fetched and addressed individually.
+            var endMessage = await ctx.Channel.GetMessageAsync(endId);
+            await endMessage.DeleteAsync();
 
             var vanisher = await ctx.RespondAsync("", false, new DiscordEmbedBuilder()
                 .WithAuthor(ctx.Member.DisplayName, null, ctx.Member.AvatarUrl)

@@ -21,11 +21,4 @@
         <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       </None>
     </ItemGroup>
-
-    <ItemGroup>
-      <ProjectReference Include="..\..\DSharpPlusPlus\DSharpPlusPlus.csproj" />
-      <ProjectReference Include="..\..\HelpPlus\HelpPlus.csproj" />
-      <ProjectReference Include="..\..\VentureConfig\VentureConfig.csproj" />
-    </ItemGroup>
-
 </Project>
