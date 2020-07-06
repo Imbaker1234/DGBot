@@ -36,8 +36,26 @@
                 DiscordRole role = e.Guild.Roles.Values.Single(r => r.Name == "Developer");
 
                 await e.Member.ReplaceRolesAsync(new[] {role});
-            };
 
+                await e.Member.SendMessageAsync(embed: new DiscordEmbedBuilder()
+                {
+                    Title = "Welcome to the Developer's Guild!",
+                    Description = "Please take a moment to introduce yourself in #chat. Let us know" +
+                                  "\n\n> What languages and frameworks you're learning/familiar with." +
+                                  "\n\n> What Projects you're currently working on." +
+                                  "\n\n> What you hope to gain as a member of the community." +
+                                  "\n\n> and lastly: A bit about yourself!" + 
+                                  "\n\n**Here is an excellent example from one of our new members**" +
+                                  "\n\n> Hi everyone! I'm littlebitt. I'm a recent bootcamp graduate with a full stack web developer certification. I also have an associate's degree in information technology. " +
+                                  "My core studies programming wise have been on JavaScript things, such as vanilla JavaScript, Angular, React, express JS and nodeJS. " +
+                                  "\n\n> Other things I've worked with are: HTML 5, CSS3, MySQL, NoSQL, MongoDB, AWS Deployment on an EC2 server, " +
+                                  "PHP, XML, JQuery, Bootstrap (gotta be honest I hate bootstrap), flexbox (this is my primary way of writing my CSS). " +
+                                  "\n\n> My current project is an angular personal portfolio that is currently making http requests to two different api's (GitHub and Trello)." +
+                                  "If anyone has any ideas, I am all ears. " +
+                                  "\n\n>Also, constructive criticism and feedback are most welcome! P.S. it's responsive!"
+                });
+            };
+            
             return client;
         }
         
