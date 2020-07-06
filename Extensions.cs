@@ -52,7 +52,7 @@
                                   "PHP, XML, JQuery, Bootstrap (gotta be honest I hate bootstrap), flexbox (this is my primary way of writing my CSS). " +
                                   "\n\n> My current project is an angular personal portfolio that is currently making http requests to two different api's (GitHub and Trello)." +
                                   "If anyone has any ideas, I am all ears. " +
-                                  "\n\n>Also, constructive criticism and feedback are most welcome! P.S. it's responsive!"
+                                  "\n\n> Also, constructive criticism and feedback are most welcome! P.S. it's responsive!"
                 });
             };
             
