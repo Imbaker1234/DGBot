@@ -6,9 +6,9 @@
     using DSharpPlus.CommandsNext.Attributes;
     using DSharpPlus.Entities;
 
-    public static class PublicService
+    public class PublicService
     {
-        public static async Task Thread(
+        public async Task Thread(
             CommandContext ctx,
             [Description("Name of Category (In quotes) ex. \"General Chat\"")]
             string category,
@@ -36,7 +36,7 @@
             });
         }
         
-        public static async Task Quote(CommandContext ctx, DiscordMessage message)
+        public async Task Quote(CommandContext ctx, DiscordMessage message)
         {
 
             var member = await ctx.Guild.GetMemberAsync(message.Author.Id);

@@ -9,9 +9,9 @@
     using DSharpPlus.CommandsNext.Attributes;
     using DSharpPlus.Entities;
 
-    public static class ModeratorService
+    public class ModeratorService
     {
-        public static async Task Ban(CommandContext ctx, DiscordUser user, string reason = "")
+        public async Task Ban(CommandContext ctx, DiscordUser user, string reason = "")
         {
             if (string.IsNullOrEmpty(reason))
             {
@@ -56,12 +56,12 @@
             await ctx.Guild.BanMemberAsync(member, 0, reason);
         }
 
-        public static async Task Archive(CommandContext ctx, [RemainingText] string reason)
+        public async Task Archive(CommandContext ctx, [RemainingText] string reason)
         {
             await Move(ctx, ctx.Channel, "Archive", reason);
         }
 
-        public static async Task Move(
+        public async Task Move(
             CommandContext ctx,
             DiscordChannel channel,
             string category,
@@ -88,7 +88,7 @@
             await ctx.Channel.SendMessageAsync(embed: eb.Build());
         }
 
-        // public static async Task Clear(CommandContext ctx, DiscordMessage start, DiscordMessage end)
+        // public async Task Clear(CommandContext ctx, DiscordMessage start, DiscordMessage end)
         // {
         //     var last100 = await ctx.Channel.GetMessagesAsync();
         //
@@ -124,7 +124,7 @@
         // }
 
         [Command("Clear")]
-        public static async Task Clear(CommandContext ctx, ulong startId, ulong endId)
+        public async Task Clear(CommandContext ctx, ulong startId, ulong endId)
         {
             var start = await ctx.Channel.GetMessageAsync(startId);
             var end = await ctx.Channel.GetMessageAsync(endId);
@@ -164,7 +164,7 @@
             await vanisher.DeleteAsync();
         }
 
-        public static async Task SyncPermissions(CommandContext ctx, DiscordChannel channel,
+        public async Task SyncPermissions(CommandContext ctx, DiscordChannel channel,
             DiscordChannel category = null)
         {
             var parent = category ?? channel.Parent;

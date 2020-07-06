@@ -18,7 +18,8 @@
         static async Task MainAsync(string[] args)
         {
             var services = new ServiceCollection();
-            
+            services.AddTransient<PublicService>();
+            services.AddTransient<ModeratorService>();
             services.AddTransient<TagRepository>(sp => new TagRepository(sp.GetService<GuildBotDbContext>()));
             services.AddSingleton<GuildBotDbContext>(provider =>
                 new GuildBotDbContext(ConfigurationProvider.GetAppSettings()["db"]));

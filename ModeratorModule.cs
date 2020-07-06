@@ -9,10 +9,17 @@ namespace DGBot
     [RequireRoles(RoleCheckMode.Any, "Trustee")]
     public class ModeratorCommands : BaseCommandModule
     {
+        private ModeratorService Service { get; set; }
+
+        public ModeratorCommands(ModeratorService service)
+        {
+            Service = service;
+        }
+
         [Command("Ban")]
         public async Task Ban(CommandContext ctx, DiscordUser user, string reason = "")
         {
-            await ModeratorService.Ban(ctx, user, reason);
+            await Service.Ban(ctx, user, reason);
         }
 
 
@@ -20,7 +27,7 @@ namespace DGBot
         [RequireRoles(RoleCheckMode.Any, "Trustee")]
         public async Task Archive(CommandContext ctx, [RemainingText] string reason)
         {
-            await ModeratorService.Archive(ctx, reason);
+            await Service.Archive(ctx, reason);
         }
 
         [Command("Move")]
@@ -32,7 +39,7 @@ namespace DGBot
             string reason,
             string moveTitle = "Channel Moved")
         {
-            await ModeratorService.Move(ctx, channel, category, reason, moveTitle);
+            await Service.Move(ctx, channel, category, reason, moveTitle);
         }
 
         [Command("clear")]
@@ -40,14 +47,14 @@ namespace DGBot
         [Description("Clears chat")]
         public async Task Clear(CommandContext ctx, ulong startId, ulong endId)
         {
-            await ModeratorService.Clear(ctx, startId, endId);
+            await Service.Clear(ctx, startId, endId);
         }
 
         [Command("SyncPermissions")]
         [RequireRoles(RoleCheckMode.Any, "Trustee")]
         public async Task SyncPermissions(CommandContext ctx, DiscordChannel channel, DiscordChannel category = null)
         {
-            await ModeratorService.SyncPermissions(ctx, channel, category);
+            await Service.SyncPermissions(ctx, channel, category);
         }
     }
 }

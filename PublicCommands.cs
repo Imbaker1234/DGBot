@@ -7,6 +7,13 @@
 
     public class PublicCommands : BaseCommandModule
     {
+        private PublicService Service { get; set; }
+
+        public PublicCommands(PublicService service)
+        {
+            Service = service;
+        }
+
         [Command("Thread")]
         [Description("Creates a new channel for a dedicated discussion to a singular topic.")]
         public async Task Thread(
@@ -17,13 +24,13 @@
             DiscordMessage message,
             [Description("Large bold text at the head of the new thread.")] [RemainingText] string title = "")
         {
-            await PublicService.Thread(ctx, category, name, message, title);
+            await Service.Thread(ctx, category, name, message, title);
         }
 
         [Command("Quote")]
         public async Task Quote(CommandContext ctx, [Description("Id of the message to quote")] DiscordMessage message)
         {
-            await PublicService.Quote(ctx, message);
+            await Service.Quote(ctx, message);
         }
     }
 }
